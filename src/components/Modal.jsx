@@ -37,7 +37,7 @@ function Modal() {
       </ButtonWrap>
       {firmodal && (
         <>
-          <Dark></Dark>
+          <OutsideArea></OutsideArea>
           <SmallModalWrap>
             <p>
               닫기와 확인 버튼 2개가 있고, 외부 영역을 눌러도 모달이 닫히지
@@ -50,7 +50,8 @@ function Modal() {
                 onClick={SmallToggleModal}
               >
                 닫기
-              </ThirdButton>
+              </ThirdButton> 
+              {/* 확인 버튼에는 onClick값이 없으므로 기능이 없다 */}
               <ThirdButton back-color={"#55EFC4"} border-color={"#55EFC4"}>
                 확인
               </ThirdButton>
@@ -60,7 +61,7 @@ function Modal() {
       )}
       {secmodal && (
         <>
-          <Dark onClick={LargeToggleModal}></Dark>
+          <OutsideArea onClick={LargeToggleModal}></OutsideArea>
           <LargeModalWrap>
             <LargeModalBtn onClick={LargeToggleModal}>X</LargeModalBtn>
             <p>
@@ -81,7 +82,7 @@ const ButtonWrap = styled.div`
   align-items: center;
 `;
 
-const Dark = styled.div`
+const OutsideArea = styled.div`
   position: fixed;
   top: 0;
   left: 0;

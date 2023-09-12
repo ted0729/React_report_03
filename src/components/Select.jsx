@@ -10,7 +10,7 @@ const Select = () => {
   // 첫번째 drop창을 클릭시 true값으로 변환하고 두번째 drop창은 꺼지게.
   const toggleFirSelectDrop = () => {
     if (firSelectDrop) {
-      setFirSelectDrop(false);
+      setFirSelectDrop(false); // 아무 클릭없이 그대로 놔뒀을 경우
     } else {
       setFirSelectDrop(true);
       setSecSelectDrop(false);
@@ -19,7 +19,7 @@ const Select = () => {
   // 두번째 drop창을 클릭시 true값으로 변환하고 첫번째 drop창은 꺼지게.
   const toggleSecSelectDrop = () => {
     if (secSelectDrop) {
-      setSecSelectDrop(false);
+      setSecSelectDrop(false); // 아무 클릭없이 그대로 놔뒀을 경우
     } else {
       setSecSelectDrop(true);
       setFirSelectDrop(false);
@@ -40,7 +40,7 @@ const Select = () => {
 
   // 겉으로 보이는 name값으로, drop창에서 name 클릭시 클릭된 name이 기본값에 나타날수 있는 설정
   const checkSelectDrop = (name, dropIndex) => {
-    if (dropIndex === 1) {
+    if (dropIndex === 1) { // 인덱스 1 값으로 설정이 될 경우(클릭이 될 경우)
       setFirSelectDrop(false);
       setSelectTitle1(name);
     } else {
@@ -63,8 +63,8 @@ const Select = () => {
               
               <FontAwesomeIcon icon={faFire} />
               &nbsp;{selectTitle1}&nbsp;
-              
               <FontAwesomeIcon icon={faFire} />
+            
             </SelectBar>
             
             <SelectBar onClick={toggleSecSelectDrop}>
@@ -80,8 +80,10 @@ const Select = () => {
           <SelectDiv>
           {firSelectDrop && (
               <DropDiv1>
-                {Languages.map((option) => (
-                  <List onClick={() => checkSelectDrop(option, 1)}>
+                {Languages.map((option, index) => (
+                  <List 
+                  key={option}
+                  onClick={() => checkSelectDrop(option, 1)}>
                     {option}
                   </List>
                 ))}
@@ -90,8 +92,10 @@ const Select = () => {
             
             {secSelectDrop && (
               <DropDiv2>
-                {Languages.map((option) => (
-                  <List onClick={() => checkSelectDrop(option, 2)}>
+                {Languages.map((option, index) => (
+                  <List 
+                  key={option}
+                  onClick={() => checkSelectDrop(option, 2)}>
                     {option}
                   </List>
                 ))}
